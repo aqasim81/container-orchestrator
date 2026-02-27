@@ -4,7 +4,7 @@ A simplified Kubernetes-style container orchestrator that deploys, scales, healt
 
 ## Status
 
-Phase 0 complete — Project scaffolded. Next: Phase 1 (Project Scaffolding & Core Infrastructure).
+Phase 1 complete — Go backend (config, store, API server, health endpoint), Next.js dashboard skeleton, and dev tooling all implemented and passing `make validate-all`. Next: Phase 2 (Container Lifecycle Management).
 
 ## Stack
 
