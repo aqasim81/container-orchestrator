@@ -16,6 +16,14 @@ test:
 test-coverage:
 	go test ./... -race -count=1 -coverprofile=coverage.out -covermode=atomic
 	go tool cover -func=coverage.out
+	@echo "Checking coverage threshold (80%)..."
+	@total=$$(go tool cover -func=coverage.out | grep total | awk '{print $$3}' | tr -d '%'); \
+	if [ $$(echo "$$total < 80" | bc -l) -eq 1 ]; then \
+		echo "FAIL: Total coverage $$total% is below 80% threshold"; \
+		exit 1; \
+	else \
+		echo "PASS: Total coverage $$total%"; \
+	fi
 
 test-integration:
 	go test ./tests/integration/... -race -count=1 -tags=integration
