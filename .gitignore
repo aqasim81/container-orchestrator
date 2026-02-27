@@ -1,0 +1,57 @@
+# Secrets — NEVER commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.*
+secrets.*
+
+# Internal docs
+plans/
+
+# Claude Code config
+.claude/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# === Go ===
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+coverage.out
+*.prof
+
+# Go workspace
+go.work
+go.work.sum
+
+# Data directory (bbolt)
+data/
+
+# === Node.js / Dashboard ===
+node_modules/
+.next/
+dist/
+out/
+*.tsbuildinfo
+.turbo/
+dashboard/coverage/
+
+# === Misc ===
+*.log
+tmp/

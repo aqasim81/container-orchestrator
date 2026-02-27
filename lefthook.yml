@@ -1,0 +1,21 @@
+pre-commit:
+  parallel: true
+  commands:
+    go-fmt:
+      glob: "*.go"
+      run: gofmt -l -d {staged_files} && test -z "$(gofmt -l {staged_files})"
+
+    go-vet:
+      glob: "*.go"
+      run: go vet ./...
+
+    go-lint:
+      glob: "*.go"
+      run: golangci-lint run --new-from-rev=HEAD~1
+
+    dashboard-lint:
+      glob: "dashboard/**/*.{ts,tsx}"
+      run: cd dashboard && npx @biomejs/biome check --staged {staged_files}
+
+    gitleaks:
+      run: gitleaks protect --staged --no-banner

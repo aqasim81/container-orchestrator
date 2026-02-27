@@ -1,0 +1,79 @@
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - staticcheck
+    - unused
+    - gosimple
+    - ineffassign
+    - typecheck
+    - bodyclose
+    - noctx
+    - gosec
+    - exhaustive
+    - gocritic
+    - gofmt
+    - goimports
+    - misspell
+    - prealloc
+    - revive
+    - unconvert
+    - unparam
+    - whitespace
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+
+  govet:
+    enable-all: true
+
+  gosec:
+    excludes:
+      - G104 # Unhandled errors — covered by errcheck
+
+  exhaustive:
+    default-signifies-exhaustive: true
+
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - style
+      - performance
+
+  revive:
+    rules:
+      - name: blank-imports
+      - name: context-as-argument
+      - name: dot-imports
+      - name: error-return
+      - name: error-strings
+      - name: error-naming
+      - name: exported
+      - name: increment-decrement
+      - name: var-naming
+      - name: range
+      - name: receiver-naming
+      - name: indent-error-flow
+      - name: empty-block
+      - name: superfluous-else
+      - name: unreachable-code
+      - name: redefines-builtin-id
+
+  goimports:
+    local-prefixes: github.com/github-builder/container-orchestrator
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gosec
+        - gocritic
+        - revive
